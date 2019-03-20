@@ -5,7 +5,7 @@ from sklearn.decomposition import PCA as sklearnPCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 import matplotlib.pyplot as plt
 
-class Classifer_dataset:
+class Classifier_dataset:
     """
     This class only works for dataframe that fit the need of classifier
     
@@ -48,7 +48,11 @@ class Classifer_dataset:
 
     def __init__(self, f):
         self._f = f
-        self._frameData = pd.read_csv(f)
+        try:
+
+            self._frameData = pd.read_csv(f)
+        except:
+            print("fail to open csv")
 
     def prepareData(self, dataColRanges, labelCol, shuffle = False):
         """
@@ -156,7 +160,7 @@ class Classifer_dataset:
             This function is meant to use for presentation the result
         """ 
         label_str = [k for k, v in self._labelMap.items() if v == np.argmax(label_ohk)]
-        return label_str
+        return str(label_str[0])
 
 
     def plotLDA(self, figs = (10, 10)):
@@ -199,7 +203,7 @@ class Classifer_dataset:
 if __name__ == "__main__":
     dataColRanges = ('1-ZCRm', '34-ChromaDeviationm')
     labelCol = 'class'
-    a = Classifer_dataset("../../data/data_set/beatsdataset.csv")
+    a = Classifier_dataset("../../data/data_set/beatsdataset.csv")
     a.prepareData(dataColRanges, labelCol, True)
     print(a._dataArray)
     print(a._labelArray)

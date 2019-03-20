@@ -2,7 +2,7 @@
 # from keras.layers import Dense
 import keras
 import numpy as np
-from classifier.prepareData import Classifer_dataset
+from classifier.prepareData import Classifier_dataset
 
 class MusicClassifier:
     """
@@ -40,7 +40,10 @@ class MusicClassifier:
         """
         get the basic infomation of dataset
         """
-        data_set = Classifer_dataset(filename)
+        data_set = Classifier_dataset(filename)
+        dataColRanges = ('1-ZCRm', '34-ChromaDeviationm')
+        labelCol = 'class'
+        data_set.divideLabelAndData(dataColRanges, labelCol)
         data_set.generateMapping()
         self._dataset = data_set
         

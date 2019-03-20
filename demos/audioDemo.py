@@ -70,8 +70,8 @@ def realTime(filename):
 """
 Basic plotting
 """
-wav_rec, f_rec = load("../data/demos/rec.wav", sr = 22050)
-wav_raw, f_raw = load("../data/demos/raw.wav", sr = 22050)
+wav_rec, f_rec = load("./data/demo_chunks/rec.wav", sr = 22050)
+wav_raw, f_raw = load("./data/demo_chunks/raw.wav", sr = 22050)
 
 plotWav(wav_rec, f_rec, 0.1, 0, 10, "rec chunk")
 plotWav(wav_raw, f_raw, 0.1, 0, 10, "raw chunk")
@@ -84,5 +84,5 @@ plotSpect(wav_raw, 0.2, "raw data spectrum")
 Real-time spectrum demo
 """
 print("plotting the real-time spectrum")
-demo_file = "../data/demos/real_time_demo.wav"
-realTime(demo_file)
+# demo_file = "./data/demo_chunks/real_time_demo.wav"
+# realTime(demo_file)

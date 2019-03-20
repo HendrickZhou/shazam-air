@@ -1,13 +1,13 @@
 from keras.models import Sequential
 from keras.layers import Dense
 import pandas as pd
-from classifier.prepareData import Classifer_dataset
+from classifier.prepareData import Classifier_dataset
 
 # prepare the data and analysis the pca and lca
 
 dataColRanges = ('1-ZCRm', '34-ChromaDeviationm')
 labelCol = 'class'
-data_set = Classifer_dataset("../data/data_set/beatsdataset.csv")
+data_set = Classifier_dataset("./data/data_set/beatsdataset.csv")
 label, data = data_set.prepareData(dataColRanges, labelCol, True)
 
 fig1 = data_set.plotPCA()
@@ -32,4 +32,4 @@ Dnn.compile(metrics=['accuracy'], optimizer='Adam', loss='mean_squared_error')
 print("Start training")
 Dnn.fit(data, label, validation_split = 0.0, epochs = 100, batch_size=100, shuffle = True)
 
-Dnn.save("./demo.h5")
+Dnn.save("./data/model/demo.h5")
