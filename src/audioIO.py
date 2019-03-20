@@ -3,8 +3,9 @@ import librosa
 from librosa import display
 import pyaudio as pa
 import wave
+import scipy.io.wavfile as sciwavf
+import matplotlib.pyplot as plt
 import struct      
-
 
 """
 Basic wav file i/o
@@ -79,7 +80,7 @@ def load(filename, sr = 22050):
     print('wav file infomation:')
     print('length of wav file: %d' % len(wav))
     print('sampling frequency is: %d' % f)
-
+    return wav, f
 
 """
 Raw data operation
@@ -120,29 +121,7 @@ def decodePCM(rawData):
     return f_data
 
 
-"""
-Plotting wav data
-"""
-def plotWav(wav, f, ratio, start, end, title, mode='t'):
-    width, height = figaspect(ratio)
-    fig = figure(figsize=(width,height))
-    if mode == 't': #time
-        startI = start * f
-        endI = end * f
-        Idx = np.arange(startI, endI)
-        chunk = wav[startI : endI]
-        plot(Idx, chunk)
-        plt.title(title)
-        return chunk
-    elif mode == 'i': # index
-#         startSec = start / f
-#         endSec = end / f
-#         secIdx = np.arange(startSec, endSec, 1/f)
-        Idx = np.arange(start, end)
-        chunk = wav[start : end]
-        plot(Idx, chunk)
-        plt.title(title)
-        return chunk
+
 
 
 

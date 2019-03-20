@@ -149,16 +149,13 @@ class Classifer_dataset:
         """
         external
         Input:
-            list of label one-hot-key code array
+            label one-hot-key code array
         Return:
-            list of label string
+            label string
         Notice:
             This function is meant to use for presentation the result
-        """
-        label_str = []
-        for i in range(len(label_ohk)):  
-            new = [k for k, v in self._labelMap.items() if v == np.argmax(label_ohk[i])]
-            label_str.append(new[0])
+        """ 
+        label_str = [k for k, v in self._labelMap.items() if v == np.argmax(label_ohk)]
         return label_str
 
 
