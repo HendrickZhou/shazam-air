@@ -13,7 +13,8 @@ wav, f = load("./exp.wav", sr = 22050)
 feats, names = calFeature('./dubstep.wav')
 
 # load model
-model = ai.loadModel("./example.h5")
+model = ai("./example.h5")
+model.getDataInfo("../data/data_set/beatsdataset.csv")
 
 # predict
 output = model.predict(feats)

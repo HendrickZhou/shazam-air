@@ -4,12 +4,10 @@ from queue import Queue
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-import librosa
 import pyaudio as pa
 import wave
-from scipy import signal
-from scipy import fftpack
-from audioIO import decodePCM
+from scipy import signal, fftpack
+from audioIO import decodePCM, load
 from visual import fft_bar_data, plotSpect, plotWav
 
 
@@ -38,12 +36,10 @@ def produce(in_q, filename):
     CHUNK = 1024
     wf = wave.open(filename, 'rb')
     p = pa.PyAudio()
-
     stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
                     channels=wf.getnchannels(),
                     rate=wf.getframerate(),
-                    output=True)
-    
+                    output=True) 
 
     data = wf.readframes(CHUNK)
 
@@ -74,19 +70,19 @@ def realTime(filename):
 """
 Basic plotting
 """
-wav_rec, f_rec = librosa.load("./exp_chunks/chunk_rec_1.wav", sr = 22050)
-wav_raw, f_raw = librosa.load("./exp_chunks/chunk_losless_1.wav", sr = 22050)
-plotWav(wav_rec, f_rec, 0.1, 0, 20000, "rec chunk", 'i')
-plotWav(wav_raw, f_raw, 0.1, 0, 20000, "raw chunk", 'i')
+wav_rec, f_rec = load("../data/demos/rec.wav", sr = 22050)
+wav_raw, f_raw = load("../data/demos/raw.wav", sr = 22050)
 
-rec_db = librosa.amplitude_to_db(abs(librosa.stft(wav_rec)))
-raw_db = librosa.amplitude_to_db(abs(librosa.stft(wav_raw)))
-plotSpect(rec_db, 0.4, "recording sepctrum")
-plotSpect(raw_db, 0.4, "raw data spectrum")
+plotWav(wav_rec, f_rec, 0.1, 0, 10, "rec chunk")
+plotWav(wav_raw, f_raw, 0.1, 0, 10, "raw chunk")
+
+plotSpect(wav_rec, 0.2, "recording sepctrum")
+plotSpect(wav_raw, 0.2, "raw data spectrum")
 
 
 """
 Real-time spectrum demo
 """
-demo_file = "./real_time_demo.wav"
+print("plotting the real-time spectrum")
+demo_file = "../data/demos/real_time_demo.wav"
 realTime(demo_file)

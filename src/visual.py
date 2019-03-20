@@ -2,14 +2,18 @@ import matplotlib.pyplot as plt
 from scipy.fftpack import fft,fftshift
 from scipy.signal import stft
 import numpy as np
-
-
-
+import librosa
 
 """
 Plotting wav data
 """
 def plotWav(wav, f, ratio, start, end, title, mode='t'):
+    """
+    This function will plot a segment of wav data
+    if mode is 't', by default, the start& end means second
+    if mode is 'i', they means index
+    ratio & title is the params for plotting
+    """
     width, height = plt.figaspect(ratio)
     fig = plt.figure(figsize=(width,height))
     if mode == 't': #time
@@ -19,35 +23,32 @@ def plotWav(wav, f, ratio, start, end, title, mode='t'):
         chunk = wav[startI : endI]
         plt.plot(Idx, chunk)
         plt.title(title)
-        return chunk
+        plt.show()
+        return fig
     elif mode == 'i': # index
-#         startSec = start / f
-#         endSec = end / f
-#         secIdx = np.arange(startSec, endSec, 1/f)
         Idx = np.arange(start, end)
         chunk = wav[start : end]
         plt.plot(Idx, chunk)
         plt.show()
         plt.title(title)
+        plt.show()
         return fig
 
+def plotSpect(wav, ratio, title):
+    """
+    This function plots the spectrum of a wav data
+    """
+    wav_db = librosa.amplitude_to_db(abs(librosa.stft(wav)))
 
-
-# def plotSpectrum():
-#     D = librosa.amplitude_to_db(np.abs(librosa.stft(wav[274520:1543504])), ref=np.max)
-#     width, height = figaspect(0.1)
-#     fig1 = figure(figsize=(width,height))
-#     librosa.display.specshow(D, y_axis='linear')
-#     plt.title("lossless")
-
-def plotSpect(specdb, ratio, title):
-    width, height = figaspect(ratio)
-    fig = figure(figsize=(width,height))
+    width, height = plt.figaspect(ratio)
+    fig = plt.figure(figsize=(width,height))
     
-    librosa.display.specshow(specdb, sr = 22050, x_axis='time', y_axis='hz')
+    librosa.display.specshow(wav_db, sr = 22050, x_axis='time', y_axis='hz')
     plt.colorbar()
     plt.title(title)
+    plt.show()
 
+    return fig
 
 def fft_bar_data(data_seq, bar_number):
     """
@@ -70,3 +71,10 @@ def fft_bar_data(data_seq, bar_number):
         data_bar[i] = np.mean(data_freq[bar_len*i : bar_len*(i + 1)])
         
     return data_bar
+
+# def plotSpectrum():
+#     D = librosa.amplitude_to_db(np.abs(librosa.stft(wav[274520:1543504])), ref=np.max)
+#     width, height = figaspect(0.1)
+#     fig1 = figure(figsize=(width,height))
+#     librosa.display.specshow(D, y_axis='linear')
+#     plt.title("lossless")

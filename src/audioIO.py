@@ -87,30 +87,19 @@ Raw data operation
 """
 def getRawData(filename):
     CHUNK = 1024
-    
     wf = wave.open(filename, 'rb')
-
     p = pa.PyAudio()
-
-    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                    channels=wf.getnchannels(),
-                    rate=wf.getframerate(),
-                    output=True)
     
     raw_data = []
 
     data = wf.readframes(CHUNK)
 
     while data != b'':
-        stream.write(data)
+        # stream.write(data)
         data = wf.readframes(CHUNK)
         raw_data.append(data)
-        
-    stream.stop_stream()
-    stream.close()
 
     p.terminate()
-    
     return raw_data
 
 def decodePCM(rawData):  

@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from featureExtract import utilities
 from scipy.signal import lfilter
 
+import random
+
 eps = 0.00000001
 
 """ Time-domain audio features """
@@ -714,12 +716,13 @@ def stFeatureSpeed(signal, fs, win, step):
 #            print curFV[n_time_spectral_feats+n_mfcc_feats], curFV[n_time_spectral_feats+n_mfcc_feats+1]
     return numpy.array(st_features)
 
+from audioIO import load
 
 def calFeature(filename, win = 120):
     """
     window_size is 120s by default
     """
-    wav, f = librosa.load(filename, sr = None)
+    wav, f = load(filename, sr = None)
     print('Length of input signal is %d'% wav.shape[0])
     print('Sampling frequency is %d'% f)
     wav_len = wav.shape[0]
@@ -727,6 +730,6 @@ def calFeature(filename, win = 120):
     winSec = win # 2 min
     startSec = random.randrange(0,math.ceil(totalSec - winSec))
     endSec = startSec + winSec
-    feature_v_raw, feature_name = feature.stFeatureExtraction(wav[startSec*f:endSec*f], f, win = winSec*f, step = 1)
+    feature_v_raw, feature_name = stFeatureExtraction(wav[startSec*f:endSec*f], f, win = winSec*f, step = 1)
     
     return feature_v_raw.reshape(1,34), feature_name

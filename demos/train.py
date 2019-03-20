@@ -1,16 +1,13 @@
 from keras.models import Sequential
 from keras.layers import Dense
 import pandas as pd
-from classifier import prepareData
+from classifier.prepareData import Classifer_dataset
 
 # prepare the data and analysis the pca and lca
 
-data = pd.read_csv("./dataset/elecfeatures/beatsdataset.csv")
-data = data.loc[:, '1-ZCRm':'class']
-
 dataColRanges = ('1-ZCRm', '34-ChromaDeviationm')
 labelCol = 'class'
-data_set = prepareData.Classifer_dataset("../data/data_set/beatsdataset.csv")
+data_set = Classifer_dataset("../data/data_set/beatsdataset.csv")
 label, data = data_set.prepareData(dataColRanges, labelCol, True)
 
 fig1 = data_set.plotPCA()

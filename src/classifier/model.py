@@ -2,7 +2,7 @@
 # from keras.layers import Dense
 import keras
 import numpy as np
-import prepareData
+from classifier.prepareData import Classifer_dataset
 
 class MusicClassifier:
     """
@@ -11,18 +11,16 @@ class MusicClassifier:
     You can retrain 
 
     _model : keras model loaded from .h5 file
-
-
-
+    _dataset : instance of classifier_dataset, contains info of dataset
+    _result : result of model prediction
     """
 
 
-    def __init__(self, model):
+    def __init__(self, filename):
         """
         init from keras model obj
         """
-        self._model = model
-        return self._model
+        self._model = keras.models.load_model(filename)
 
     def loadModel(self, filename, type = 'w'):
         """
@@ -38,17 +36,25 @@ class MusicClassifier:
 
         return self._model
 
+    def getDataInfo(self, filename):
+        """
+        get the basic infomation of dataset
+        """
+        data_set = Classifer_dataset(filename)
+        data_set.generateMapping()
+        self._dataset = data_set
+        
 
     
 
-    def trianModel(self, filename):
-        """
-        Load .h5 file, extract the model
+    # def trianModel(self, filename):
+    #     """
+    #     Load .h5 file, extract the model
 
-        """
-        frame_data = MusicClassifier(filename)
-        # self._dataset = 
-        pass
+    #     """
+    #     frame_data = MusicClassifier(filename)
+    #     # self._dataset = 
+    #     pass
 
 
     
@@ -83,8 +89,10 @@ class MusicClassifier:
         softmax_o = self._model.predict(data)
         max_ele = max(softmax_o)
         ohk_out = np.where(softmax_o >= max_ele, 1, 0)
-        result = prepareData.Classifer_dataset.one_hot_key_decode(ohk_out)
+        result = self._dataset.one_hot_key_decode(ohk_out)
+        self._result = result
         print("Huh, this song sounds like " + result)
+        return result
         
 
 
@@ -97,6 +105,5 @@ if __name__ == "__main__":
     # example = np.random.random_sample(23)
     # a.predict(example)
     # b = MusicClassifier(model)
-    a = Classifer_dataset("../../data/data_set/beatsdataset.csv")
     pass
     
