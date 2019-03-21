@@ -48,6 +48,7 @@ The best model I trained reachs a accuracy of 80%. It's a good number for a data
 The advice is to create the dataset of your own (Yet the most tricky and impossible part is how you can access enough amount of music data), the original dataset is not fully reliable, but it's the best I can find.
 
 Or you can just keep trying Tweaking Your Model!
+
 ![](asset/meme.gif)
 ## 4.real-time spectrum demo
 This demo is recommended running on the jupyter notebook because I met some strange bugs when trying to run it by script.
