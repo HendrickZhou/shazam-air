@@ -35,14 +35,55 @@ You can choose to run it with example recordings `/dubsteps.wav` and `/future.wa
 But the model's accuracy is yet to improve, which will be discussed later.
 
 The recommended method to run your model is to contruct your model outside the project, save your model data, and load it in this project. The interface for training your model is reserved but not completed now. Hope I can finish it sooner.
-![predict](asset/predict.png)
+
+You can read the result of prediction from the last line of terminal output like this
+
+`Huh, this song sounds like BigRoom`
 ## 3.train
 You can try training your own model by running the `train.py` script.
 
 This project have already include the dataset to train the model. This dataset is downloaded from [kaggle](https://en.wikipedia.org/wiki/Kaggle), See more infomation about it [here](https://www.kaggle.com/caparrini/beatsdataset)
 
-You should be able to see the training process in the terminal output. Plus you can see the PCA and LDA analysis of our dataset
-![training process](asset/train.png)
+You can see the PCA and LDA analysis of our dataset.
+
+![pca](asset/pca.png)
+![lda](asset/lda.png)
+
+You should be able to see the training process in the terminal output.
+
+```
+Construct the model
+Start training
+Epoch 1/100
+2019-03-21 11:12:32.030091: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2300/2300 [==============================] - 1s 250us/step - loss: 0.0417 - acc: 0.0478
+Epoch 2/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0416 - acc: 0.0509
+Epoch 3/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0415 - acc: 0.0648
+Epoch 4/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0415 - acc: 0.0683
+Epoch 5/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0414 - acc: 0.0648
+Epoch 6/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0411 - acc: 0.0796
+Epoch 7/100
+2300/2300 [==============================] - 0s 79us/step - loss: 0.0408 - acc: 0.0909
+.
+.
+.
+Epoch 97/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0368 - acc: 0.2748
+Epoch 98/100
+2300/2300 [==============================] - 0s 79us/step - loss: 0.0368 - acc: 0.2683
+Epoch 99/100
+2300/2300 [==============================] - 0s 79us/step - loss: 0.0371 - acc: 0.2643
+Epoch 100/100
+2300/2300 [==============================] - 0s 78us/step - loss: 0.0373 - acc: 0.2435
+```
+
+Now you can get a model named `demo_exp.h5` in `data/model/` directory
+
 The best model I trained reachs a accuracy of 80%. It's a good number for a dataset of only 2300 data when you try to classifiy 23 classes.
 
 The advice is to create the dataset of your own (Yet the most tricky and impossible part is how you can access enough amount of music data), the original dataset is not fully reliable, but it's the best I can find.
