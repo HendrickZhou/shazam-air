@@ -1,8 +1,13 @@
 Python lib needed
-wave - standard lib?
 
+numpy
+pandas
+matplotlib
 scipy - basic signal process
-librosa - feature extraction (another option: pyAudioAnalysis, but librosa is better mantained)
-sklearn - classifier
-keras - classifie(probabaly)
 pyaudio - audio device IO
+librosa - feature extraction (another option: pyAudioAnalysis, but librosa is better maintained)
+scikit-learn - classifier
+keras - classifie(probabaly)
+
+
+

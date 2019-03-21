@@ -18,4 +18,3 @@ model.getDataInfo("./data/data_set/beatsdataset.csv")
 
 # predict
 output = model.predict(feats)
-print(output)
