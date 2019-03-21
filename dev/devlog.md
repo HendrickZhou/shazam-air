@@ -10,7 +10,7 @@ scikit-learn - classifier
 keras - classifie(probabaly)
 
 
-deploy:
+## deploy:
 conda env export > environment.yml
 
 

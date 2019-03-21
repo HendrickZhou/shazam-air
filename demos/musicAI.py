@@ -6,8 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # record the music
-# frames, ex_samWid = record("./data/demo_chunks/exp.wav", time = 10)
-# wav, f = load("./data/demo_chunks/exp.wav", sr = 22050)
+# filename = "../data/demo_chunks/exp.wav"
+# frames, ex_samWid = record(filename, time = 10)
+# feats, names = calFeature(filename)
 
 # calculate params
 feats, names = calFeature('../data/demo_chunks/dubstep.wav')
