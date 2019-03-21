@@ -50,3 +50,5 @@ Open `real_time_demo.ipynb`, run through the demo, and you should be able to see
 I found matplotlib extremely not good for real-time plotting cuz it's really slow and memory-consuming. The demo is the best I can do now, but still have obvious delay. Maybe we can try other library like openGL.
 
 The spectrum is not ideal now cuz the y-axis is not fixed. Right now I can't figure out how to disable its auto-scaling setting.
+
+[REAL-TIME DEMO](assets/rt-spec.gif)
