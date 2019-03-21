@@ -51,4 +51,4 @@ I found matplotlib extremely not good for real-time plotting cuz it's really slo
 
 The spectrum is not ideal now cuz the y-axis is not fixed. Right now I can't figure out how to disable its auto-scaling setting.
 
-[REAL-TIME DEMO](asset/rt-spec.gif)
+![REAL-TIME DEMO](asset/rt-spec.gif)
