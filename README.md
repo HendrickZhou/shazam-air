@@ -21,6 +21,10 @@ Music classifier project.
 Just run the script in `demos/` directory
 
 You should be able to see the plotting of two example audio file in time & frequency domain
+![raw](asset/raw_chunk.png)
+![rec](asset/rec_chunk.png)
+![raw_spec](asset/raw_spec.png)
+![rec_spec](asset/rec_spec.png)
 ## 2.musicAI
 Run the script in `demos/` directory
 
@@ -31,6 +35,7 @@ You can choose to run it with example recordings `/dubsteps.wav` and `/future.wa
 But the model's accuracy is yet to improve, which will be discussed later.
 
 The recommended method to run your model is to contruct your model outside the project, save your model data, and load it in this project. The interface for training your model is reserved but not completed now. Hope I can finish it sooner.
+![predict](asset/predict.png)
 ## 3.train
 You can try training your own model by running the `train.py` script.
 
@@ -38,7 +43,7 @@ This project have already include the dataset to train the model. This dataset i
 
 You should be able to see the training process in the terminal output. Plus you can see the PCA and LDA analysis of our dataset
 
-
+![training process](asset/train.png)
 ## 4.real-time spectrum demo
 This demo is recommended running on the jupyter notebook because I met some strange bugs when trying to run it by script.
 
