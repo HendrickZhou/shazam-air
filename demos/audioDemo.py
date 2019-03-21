@@ -70,8 +70,8 @@ from visual import fft_bar_data, plotSpect, plotWav
 """
 Basic plotting
 """
-wav_rec, f_rec = load("./data/demo_chunks/rec.wav", sr = 22050)
-wav_raw, f_raw = load("./data/demo_chunks/raw.wav", sr = 22050)
+wav_rec, f_rec = load("../data/demo_chunks/rec.wav", sr = 22050)
+wav_raw, f_raw = load("../data/demo_chunks/raw.wav", sr = 22050)
 
 plotWav(wav_rec, f_rec, 0.1, 0, 10, "rec chunk")
 plotWav(wav_raw, f_raw, 0.1, 0, 10, "raw chunk")

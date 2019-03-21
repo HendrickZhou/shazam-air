@@ -7,7 +7,7 @@ from classifier.prepareData import Classifier_dataset
 
 dataColRanges = ('1-ZCRm', '34-ChromaDeviationm')
 labelCol = 'class'
-data_set = Classifier_dataset("./data/data_set/beatsdataset.csv")
+data_set = Classifier_dataset("../data/data_set/beatsdataset.csv")
 label, data = data_set.prepareData(dataColRanges, labelCol, True)
 
 fig1 = data_set.plotPCA()
@@ -32,4 +32,5 @@ Dnn.compile(metrics=['accuracy'], optimizer='Adam', loss='mean_squared_error')
 print("Start training")
 Dnn.fit(data, label, validation_split = 0.0, epochs = 100, batch_size=100, shuffle = True)
 
-Dnn.save("./data/model/demo.h5")
+# try training your own package!
+Dnn.save("../data/model/demo_exp.h5")

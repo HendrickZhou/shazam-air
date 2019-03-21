@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 # wav, f = load("./data/demo_chunks/exp.wav", sr = 22050)
 
 # calculate params
-feats, names = calFeature('./data/demo_chunks/dubstep.wav')
+feats, names = calFeature('../data/demo_chunks/dubstep.wav')
 
 # load model
-model = MusicClassifier("./data/model/dnn_3.h5")
-model.getDataInfo("./data/data_set/beatsdataset.csv")
+model = MusicClassifier("../data/model/dnn_3.h5")
+model.getDataInfo("../data/data_set/beatsdataset.csv")
 
 # predict
 output = model.predict(feats)
