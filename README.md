@@ -15,7 +15,7 @@ Music classifier project.
 `$ conda develop /Your/Project/Path/shazam-air/src`
 
 # Run Demos
-    Note: all the demo dataset, model and wav files are provided under the `/data` directory. Feel free to record or inport your own demo file though.
+    Note: all the demo dataset, model and wav files are provided under the `/data` directory. Feel free to record or import your own demo file though.
     
 ## 1.audioDemo
 Just run the script in `demos/` directory
