@@ -42,8 +42,13 @@ You can try training your own model by running the `train.py` script.
 This project have already include the dataset to train the model. This dataset is downloaded from [kaggle](https://en.wikipedia.org/wiki/Kaggle), See more infomation about it [here](https://www.kaggle.com/caparrini/beatsdataset)
 
 You should be able to see the training process in the terminal output. Plus you can see the PCA and LDA analysis of our dataset
-
 ![training process](asset/train.png)
+The best model I trained reachs a accuracy of 80%. It's a good number for a dataset of only 2300 data when you try to classifiy 23 classes.
+
+The advice is to create the dataset of your own (Yet the most tricky and impossible part is how you can access enough amount of music data), the original dataset is not fully reliable, but it's the best I can find.
+
+Or you can just keep trying Tweaking Your Model!
+![](asset/meme.gif)
 ## 4.real-time spectrum demo
 This demo is recommended running on the jupyter notebook because I met some strange bugs when trying to run it by script.
 
